@@ -19,7 +19,7 @@ function Home() {
 export default Home
 
 const Container = styled.div`
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
 `
 
@@ -32,7 +32,6 @@ const Banner = styled.div`
    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `
 const Content = styled.div`
-   background: white;
    padding-left: 10px;
    padding-right: 10px;
    margin-top: -300px;
