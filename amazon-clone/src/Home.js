@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Product from './Product'
 
 function Home() {
     return (
@@ -8,7 +9,8 @@ function Home() {
 
             </Banner>
             <Content>
-jjkbjb
+                <Product />
+                <Product />
             </Content>
         </Container>
     )
@@ -17,7 +19,8 @@ jjkbjb
 export default Home
 
 const Container = styled.div`
-
+    max-width: 1100px;
+    margin: 0 auto;
 `
 
 const Banner = styled.div`
@@ -25,9 +28,15 @@ const Banner = styled.div`
    min-height: 500px;
    background-position: center;
    background-size: cover;
-   mask-image: linear-gardient(to bottom, rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 0.0));
+   z-index: 1;
+   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 `
 const Content = styled.div`
    background: white;
+   padding-left: 10px;
+   padding-right: 10px;
+   margin-top: -300px;
+   z-index: 100;
+   display: flex;
 `
 

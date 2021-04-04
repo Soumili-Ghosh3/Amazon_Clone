@@ -11,7 +11,9 @@ function Header()
       <div>
           <Container>
           <HeaderLogo>
-              <img src={"https://imgur.com/7I9Was5.png"}></img>
+              <Link to="/">
+                <img src={"https://imgur.com/7I9Was5.png"}></img>
+              </Link>
           </HeaderLogo>
 
             <HeaderOptionAddress>
