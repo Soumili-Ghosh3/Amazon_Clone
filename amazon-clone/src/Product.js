@@ -1,20 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Product() {
+function Product({title, price, image, rating, id}) {
     return (
         <Container>
             <Title>
-                Ipad Pro
+                {title}
             </Title>
             <Price>
-                $1499
+                ${price }
             </Price>
             <Rating>
-            ⭐⭐⭐⭐⭐
+                {
+                    Array(rating)
+                    .fill()
+                    .map(rating => <p> ⭐ </p>)
+                }
             </Rating>
 
-            <Image src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1583553704156.jpg"/>
+            <Image src={image}/>
 
             <ActioinSection>
                 <AddToCartButton>
@@ -44,6 +48,7 @@ const Price = styled.span`
    margin-top: 3px;
 `
 const Rating = styled.div`
+   display: flex;
 `
 const Image = styled.img`
    max-height: 200px;
