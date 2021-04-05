@@ -1,5 +1,6 @@
  import React from 'react'
  import styled from 'styled-components'
+ import CartItem from './CartItem'
 
  function CartItems() {
      return (
@@ -22,6 +23,8 @@
     padding: 20px;
     background-color: white;
 `
-const Title = styled.div``
+const Title = styled.div`
+   font-weight: 700;
+   font-size: 30px;
+`
 const ItemsContainer = styled.div``
-const CartItem = styled.div``
