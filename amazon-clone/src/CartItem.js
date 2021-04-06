@@ -1,22 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
 
- function CartItem() {
+ function CartItem({id, item}) {
+     let options = []
+     for(let i=1;i<Math.max(item.quantity + 1, 20); i++)
+     {
+        options.push(<option value={i}> Qty: {i} </option>);
+     }
      return (
          <Container>
              <ImageContainer>
-                 <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202003_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1583553704156.jpg" />
+                 <img src={item.image} alt=""/>
              </ImageContainer>
              <CartItemInfo>
                  <CartItemInfoTop>
-                     <h2> Ipad Pro </h2>
+                     <h2> {item.name} </h2>
                  </CartItemInfoTop>
                  <CartItemInfoBottom>
-                     <CartItemQuantityContainer> 5 </CartItemQuantityContainer>
+                    <CartItemQuantityContainer>
+                        <select value={item.quantity}>
+                            {options}
+                        </select>
+                         
+                    </CartItemQuantityContainer>
                      <CartItemDeleteContainer> Delete </CartItemDeleteContainer>
                  </CartItemInfoBottom>
              </CartItemInfo>
-             <CartItemPrice> $1300 </CartItemPrice>
+             <CartItemPrice> ${item.price} </CartItemPrice>
          </Container>
      )
  }
@@ -26,6 +36,7 @@ import styled from 'styled-components'
  const Container = styled.div`
     padding: 12px 0 12px 0;
     display: flex;
+    border-bottom: 1px solid #DDD;
 `
  const ImageContainer = styled.div`
     width: 200px;
@@ -39,7 +50,9 @@ import styled from 'styled-components'
         height: 100%;
     }
  `
- const CartItemInfo = styled.div``
+ const CartItemInfo = styled.div`
+    flex-grow: 1;
+ `
  const CartItemInfoTop = styled.div`
     color: #007185;
     h2{
@@ -49,8 +62,19 @@ import styled from 'styled-components'
  const CartItemInfoBottom = styled.div`
     display: flex;
     margin-top: 4px;
+    align-items: center;
  `
- const CartItemQuantityContainer = styled.div``
+ const CartItemQuantityContainer = styled.div`
+    select{
+        border-radius: 7px;
+        background-color: #f0f2f2;
+        padding: 8px;
+        box-shadow: 0 2px 5px rgba(15,17,17,.15);
+    }
+    select:focus{
+        outline: none;
+    }
+ `
  const CartItemDeleteContainer = styled.div`
     color: #007185;
     margin-left: 16px;

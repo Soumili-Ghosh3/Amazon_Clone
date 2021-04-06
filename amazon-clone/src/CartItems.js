@@ -2,13 +2,20 @@
  import styled from 'styled-components'
  import CartItem from './CartItem'
 
- function CartItems() {
+ function CartItems({cartItems}) {
      return (
         <Container>
            <Title>Shopping Cart</Title>
            <hr />
            <ItemsContainer>
-               <CartItem />
+               {
+                  cartItems.map((item) => (
+                     <CartItem 
+                     id = {item.id}
+                     item = {item.product}
+                     />
+                  ))
+               }
            </ItemsContainer>
         </Container>
      )
@@ -23,8 +30,7 @@
     padding: 20px;
     background-color: white;
 `
-const Title = styled.div`
-   font-weight: 700;
-   font-size: 30px;
+const Title = styled.h1`
+   margin-bottom: 8px;
 `
 const ItemsContainer = styled.div``
