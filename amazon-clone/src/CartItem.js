@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { db } from './firebase'
 
  function CartItem({id, item}) {
      let options = []
@@ -7,6 +8,13 @@ import styled from 'styled-components'
      {
         options.push(<option value={i}> Qty: {i} </option>);
      }
+
+     const changeQuantity = (newQuantity) => {
+        db.collection('cartItems').doc(id).update({
+            quantity: parseInt(newQuantity)
+        })
+     }
+
      return (
          <Container>
              <ImageContainer>
@@ -18,7 +26,9 @@ import styled from 'styled-components'
                  </CartItemInfoTop>
                  <CartItemInfoBottom>
                     <CartItemQuantityContainer>
-                        <select value={item.quantity}>
+                        <select 
+                        value={item.quantity}
+                        onChange={(e) => changeQuantity(e.target.value)} >
                             {options}
                         </select>
                          
@@ -34,7 +44,8 @@ import styled from 'styled-components'
  export default CartItem
 
  const Container = styled.div`
-    padding: 12px 0 12px 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
     display: flex;
     border-bottom: 1px solid #DDD;
 `

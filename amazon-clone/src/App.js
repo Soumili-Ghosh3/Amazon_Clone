@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import Header from './Header'
 import Cart from './Cart'
 import Home from './Home'
+import styled from 'styled-components'
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import {db} from './firebase'
 
@@ -27,8 +28,8 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Header />
+      <Container>
+        <Header cartItems={cartItems}/>
 
         <Switch>
 
@@ -41,10 +42,13 @@ function App() {
           </Route>
 
         </Switch>
-    </div>
+    </Container>
     </Router>
     
   );
 }
 
 export default App
+
+const Container = styled.div`
+`

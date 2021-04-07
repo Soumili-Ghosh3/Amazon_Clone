@@ -24,7 +24,7 @@
  export default CartItems
  
  const Container = styled.div`
-    height: 300px;
+    //height: 500px;
     flex: 0.8;
     margin: 0 30px 0 30px;
     padding: 20px;
