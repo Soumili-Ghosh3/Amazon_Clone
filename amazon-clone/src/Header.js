@@ -14,6 +14,7 @@ function Header({ cartItems })
         });
         return count;
     }
+    
   return(
       <div>
           <Container>

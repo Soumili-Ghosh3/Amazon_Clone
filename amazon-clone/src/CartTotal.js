@@ -1,10 +1,14 @@
  import React from 'react'
  import styled from 'styled-components'
+ import NumberFormat from 'react-number-format';
 
- function CartTotal() {
+ function CartTotal({getTotalPrice, getCount}) {
+     
      return (
         <Container>
-             <Subtotal> Subtotal (2 items): $1,500 </Subtotal>
+             <Subtotal> Subtotal ({getCount()} items): 
+             <NumberFormat value={getTotalPrice()} className="foo" displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={(value, props) => <div {...props}>{value}</div>} />
+             </Subtotal>
              <CheckoutButton> Proceed to Checkout </CheckoutButton>
         </Container>
      )
@@ -13,7 +17,6 @@
  export default CartTotal
  
  const Container = styled.div`
-    height: 200px;
     flex: 0.3;
     margin: 0 30px 0 30px;
     padding: 20px;
