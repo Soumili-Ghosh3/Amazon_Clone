@@ -5,7 +5,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import {Link} from 'react-router-dom'
 
-function Header({ cartItems })
+function Header({ cartItems , user})
 {
     const getCount = () => {
         let count = 0;
@@ -42,7 +42,7 @@ function Header({ cartItems })
             <HeaderNavItems>
 
                 <HeaderOption>
-                    <HeaderOptionLineOne>Hello, Soumili</HeaderOptionLineOne>
+                    <HeaderOptionLineOne>Hello, {user.name}</HeaderOptionLineOne>
                     <HeaderOptionLineTwo>Accounts & Lists</HeaderOptionLineTwo>
                 </HeaderOption>
 
