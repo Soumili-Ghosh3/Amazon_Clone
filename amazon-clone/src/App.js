@@ -5,12 +5,12 @@ import Cart from './Cart'
 import Home from './Home'
 import styled from 'styled-components'
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import {db} from './firebase'
+import {db, auth} from './firebase'
 import Login from './Login'
 
 function App() {
 
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null)
   const [cartItems, setCartItems] = useState([])
 
   const getCartItems = () =>
@@ -24,31 +24,39 @@ function App() {
       setCartItems(tempItems)
     })
   }
-
+  
+  const signOut = () => {
+    auth.signOut().then(() => {
+      setUser(null);
+    })
+  }
   useEffect(() => {
     getCartItems();
   }, [])
 
   return (
     <Router>
-      <Container>
-        <Header user={user} cartItems={cartItems}/>
+      {
+        !user ? (
+          <Login setUser={setUser}/>
+        ) : (
+             <Container>
+               <Header signOut={signOut} user={user} cartItems={cartItems}/>
 
-        <Switch>
+             <Switch>
 
-          <Route path='/login'>
-             <Login setUser={setUser}/>
-          </Route>
-          <Route path="/cart">
-            <Cart cartItems={cartItems}/>
-          </Route>
+              <Route path="/cart">
+                <Cart cartItems={cartItems}/>
+              </Route>
 
-          <Route path="/">
-            <Home />
-          </Route>
+              <Route path="/">
+                <Home />
+              </Route>
 
-        </Switch>
-    </Container>
+             </Switch>
+            </Container>
+            )
+      }
     </Router>
     
   );
