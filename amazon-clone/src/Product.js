@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {db} from './firebase'
+import NumberFormat from 'react-number-format';
 
 function Product({title, price, image, rating, id}) {
 
@@ -29,7 +30,8 @@ function Product({title, price, image, rating, id}) {
                 {title}
             </Title>
             <Price>
-                ${price }
+            <NumberFormat value={price} className="foo" displayType={'text'} thousandSeparator={true} prefix={'₹'} renderText={(value, props) => <div {...props}>{value}</div>} />
+    
             </Price>
             <Rating>
                 {
@@ -66,14 +68,16 @@ const Title = styled.span`
 `
 const Price = styled.span`
    font-weight: 500;
-   margin-top: 3px;
+   margin-top: 10px;
 `
 const Rating = styled.div`
    display: flex;
+   margin-top: 10px;
 `
 const Image = styled.img`
    max-height: 200px;
    object-fit: contain;
+   margin-top: 10px;
 `
 const AddToCartButton = styled.button`
    width: 100px;

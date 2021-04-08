@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SearchIcon from '@material-ui/icons/Search';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import {Link} from 'react-router-dom'
 
@@ -26,7 +26,7 @@ function Header({ cartItems , user, signOut})
 
             <HeaderOptionAddress>
                 <LocationOnIcon/>
-                <HeaderOption onClick={signOut}>
+                <HeaderOption>
                     <HeaderOptionLineOne> Hello, </HeaderOptionLineOne>
                     <HeaderOptionLineTwo> Select your Address </HeaderOptionLineTwo>
                 </HeaderOption>
@@ -41,7 +41,7 @@ function Header({ cartItems , user, signOut})
 
             <HeaderNavItems>
 
-                <HeaderOption>
+                <HeaderOption onClick={signOut}>
                     <HeaderOptionLineOne>Hello, {user.name}</HeaderOptionLineOne>
                     <HeaderOptionLineTwo>Accounts & Lists</HeaderOptionLineTwo>
                 </HeaderOption>
@@ -53,7 +53,7 @@ function Header({ cartItems , user, signOut})
 
                 <HeaderOptionCart>
                     <Link to="/cart">
-                       <ShoppingBasketIcon/>
+                       <ShoppingCartIcon/>
                        <CartCount>{ getCount() }</CartCount>
                     </Link>
                 </HeaderOptionCart>
@@ -125,6 +125,7 @@ const HeaderNavItems = styled.div`
 `
 const HeaderOption = styled.div`
     padding: 10px 9px 10px 9px;
+    cursor: pointer
 `
 const HeaderOptionCart = styled.div`
     display: flex;

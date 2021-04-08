@@ -12,6 +12,7 @@
                  photo: user.photoURL
              }
              setUser(newUser);
+
          }).catch((error) => {
              alert(error.message);
          })
